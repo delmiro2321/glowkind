@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Detail</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <div class="top-bar">FREE shipping on orders over $50 | Download our App</div>
+  <div class="promo-bar">PAYDAY: UP TO 30% OFF SELECTED PRODUCTS</div>
+
+  <div class="nav-container">
+    <a href="index.html" style="text-decoration: none; color: inherit;" class="logo">GLOW KIND</a>
+    <div class="nav-links">
+
+      <!-- Makeup -->
+      <div class="dropdown">
+        <a href="makeup/makeup.html" class="dropbtn">Makeup</a>
+        <div class="dropdown-content">
+          <div class="submenu">
+            <h4>Face</h4>
+            <a href="makeup/face/foundation.html">Foundation</a>
+          </div>
+          <div class="submenu">
+            <h4>Eyes</h4>
+            <a href="makeup/eyes/mascara.html">Mascara</a>
+          </div>
+          <div class="submenu">
+            <h4>Lips</h4>
+            <a href="makeup/lips/lipgloss.html">Lip Gloss</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skincare -->
+      <div class="dropdown">
+        <a href="skincare/skincare.html" class="dropbtn">Skincare</a>
+        <div class="dropdown-content">
+          <div class="submenu">
+            <h4>Cleansers</h4>
+            <a href="skincare/cleansers/facewash.html">Face Wash</a>
+          </div>
+          <div class="submenu">
+            <h4>Moisturizers</h4>
+            <a href="skincare/moisturizers/daycream.html">Day Cream</a>
+          </div>
+          <div class="submenu">
+            <h4>Treatments</h4>
+            <a href="skincare/treatments/serums.html">Serums</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hair -->
+      <div class="dropdown">
+        <a href="hair/hair.html" class="dropbtn">Hair</a>
+        <div class="dropdown-content">
+          <div class="submenu">
+            <h4>Shampoo</h4>
+            <a href="hair/shampoo/shampoo.html">Shampoo</a>
+          </div>
+          <div class="submenu">
+            <h4>Styling</h4>
+            <a href="hair/styling/hairsprays.html">Hair Sprays</a>
+          </div>
+          <div class="submenu">
+            <h4>Treatments</h4>
+            <a href="hair/treatments/hairmasks.html">Hair Masks</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Us -->
+      <div class="dropdown">
+        <a href="aboutus.html" class="dropbtn">About Us</a>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="dropdown">
+        <a href="contactus.html" class="dropbtn">Contact Us</a>
+      </div>
+
+
+    </div>
+
+    <div class="nav-icons">
+      <a href='#' onclick="toggleLanguage()">🌍 Language</a>
+      <a href="#">🔑 Sign In</a>
+      <a href="#">🛍️ Basket</a>
+    </div>
+  </div>
+
+  <!-- Página de Detalhe -->
+  <div class="container">
+
+    <div class="title">PRODUCT DETAIL</div>
+
+    <div class="detail">
+      <div class="image">
+        <img src="" alt="Product image">
+      </div>
+      <div class="content">
+        <h1 class="name"></h1>
+        <div class="rating">★★★★☆ <span>(120 reviews)</span></div>
+        <div class="price"></div>
+
+        <div class="variants">
+          <label for="size">Tamanho:</label>
+          <select id="size">
+            <option value="p">P</option>
+            <option value="m">M</option>
+            <option value="g">G</option>
+            <option value="gg">GG</option>
+          </select>
+        </div>
+
+        <div class="buttons">
+          <button aria-label="Buy Now">Check Out</button>
+          <button aria-label="Add to Cart">
+            Add To Cart
+            <span>
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <div class="description"></div>
+
+        <div class="tags">
+          <span class="tag">#casual</span>
+          <span class="tag">#verão</span>
+          <span class="tag">#destaque</span>
+        </div>
+
+        <div class="share">
+          <span>Compartilhar:</span>
+          <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="icons/whatsapp.svg" alt="WhatsApp"></a>
+          <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="title">Similar product</div>
+    <div class="listProduct"></div>
+  </div>
+
+  <script>
+    let products = null;
+    fetch('products.json')
+      .then(response => response.json())
+      .then(data => {
+        products = data;
+        showDetail();
+      });
+
+    function showDetail() {
+      let detail = document.querySelector('.detail');
+      let listProduct = document.querySelector('.listProduct');
+      let productId = new URLSearchParams(window.location.search).get('id');
+      let thisProduct = products.find(value => value.id == productId);
+      if (!thisProduct) {
+        window.location.href = "/";
+        return;
+      }
+
+      detail.querySelector('.image img').src = thisProduct.image;
+      detail.querySelector('.name').innerText = thisProduct.name;
+      detail.querySelector('.price').innerText = '€' + thisProduct.price;
+      detail.querySelector('.description').innerText = thisProduct.description;
+
+      products
+        .filter(value => value.id != productId)
+        .forEach(product => {
+          let newProduct = document.createElement('a');
+          newProduct.href = '/detail.html?id=' + product.id;
+          newProduct.classList.add('item');
+          newProduct.innerHTML = `
+            <img src="${product.image}" alt="">
+            <h2>${product.name}</h2>
+            <div class="price">€${product.price}</div>`;
+          listProduct.appendChild(newProduct);
+        });
+    }
+  </script>
+
+  <!-- Testimonial -->
+  <div class="testimonial">
+    <div class="title">Testimonial</div>
+    <div class="small-container">
+      <div class="row">
+        <div class="col-3">
+          <i class="fa fa-quote-left"></i>
+          <p> Minha prima e boa</p>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <img src="images/user-1.png">
+          <h3>Sean Parker</h3>
+        </div>
+        <div class="col-3">
+          <i class="fa fa-quote-left"></i>
+          <p> Minha prima e boa</p>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <img src="images/user-2.png">
+          <h3>Mike Smith</h3>
+        </div>
+        <div class="col-3">
+          <i class="fa fa-quote-left"></i>
+          <p> Minha prima e boa</p>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <img src="images/user-3.png">
+          <h3>Mabel Joe</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="title">FAQ</div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-col-1">
+      <h3>About Us</h3>
+      <p>Glow Kind is committed to bringing you the best in beauty, skincare, and haircare with kindness and care.
+      </p>
+    </div>
+
+    <div class="footer-col-2">
+      <img src="images/logo.png" alt="Glow Kind Logo">
+      <p>Kindness in every drop.</p>
+    </div>
+
+    <div class="footer-col-3">
+      <h3>Links</h3>
+      <ul class="ul">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="makeup/makeup.html">Makeup</a></li>
+        <li><a href="skincare/skincare.html">Skincare</a></li>
+        <li><a href="hair/hair.html">Hair</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-4">
+      <h3>Follow Us</h3>
+      <ul class="ul">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Language -->
+  <script>
+    const translations = {
+      en: {
+        topBar: "FREE shipping on orders over $50 | Download our App",
+        promoBar: "PAYDAY: UP TO 30% OFF SELECTED PRODUCTS",
+        featured: "PRODUCT DETAIL",
+        similar: "Similar product",
+        buyNow: "Check Out",
+        addToCart: "Add To Cart",
+        testimonial: "Testimonial",
+        faq: "FAQ",
+        footerAboutTitle: "About Us",
+        footerAboutText: "Glow Kind is committed to bringing you the best in beauty, skincare, and haircare with kindness and care.",
+        footerSlogan: "Kindness in every drop.",
+        footerLinksTitle: "Links",
+        footerFollowTitle: "Follow Us",
+        footerHome: "Home",
+        footerMakeup: "Makeup",
+        footerSkincare: "Skincare",
+        footerHair: "Hair",
+        footerInstagram: "Instagram",
+        footerFacebook: "Facebook",
+        footerTwitter: "Twitter",
+        share: "Share:"
+      },
+      pt: {
+        topBar: "ENVIO GRÁTIS em compras acima de $50 | Baixe nosso app",
+        promoBar: "DIA DE PAGAMENTO: ATÉ 30% DE DESCONTO EM PRODUTOS SELECIONADOS",
+        featured: "DETALHES DO PRODUTO",
+        similar: "Produtos Similares",
+        buyNow: "Finalizar Compra",
+        addToCart: "Adicionar ao Carrinho",
+        testimonial: "Testemunhos",
+        faq: "Perguntas Frequentes",
+        footerAboutTitle: "Sobre Nós",
+        footerAboutText: "A Glow Kind está comprometida em trazer o melhor em beleza, cuidados com a pele e cabelos com gentileza e carinho.",
+        footerSlogan: "Gentileza em cada gota.",
+        footerLinksTitle: "Links",
+        footerFollowTitle: "Siga-nos",
+        footerHome: "Início",
+        footerMakeup: "Maquiagem",
+        footerSkincare: "Cuidados com a Pele",
+        footerHair: "Cabelos",
+        footerInstagram: "Instagram",
+        footerFacebook: "Facebook",
+        footerTwitter: "Twitter",
+        share: "Compartilhar:"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'pt' : 'en';
+      applyTranslations(currentLang);
+      updateLanguageButton();
+    }
+
+    function applyTranslations(lang) {
+      const t = translations[lang];
+
+      document.querySelector('.top-bar').textContent = t.topBar;
+      document.querySelector('.promo-bar').textContent = t.promoBar;
+
+      // Product detail title
+      document.querySelectorAll('.title')[0].textContent = t.featured;
+      document.querySelectorAll('.title')[1].textContent = t.similar;
+
+      // Buttons
+      document.querySelector('.buttons button:nth-child(1)').textContent = t.buyNow;
+      document.querySelector('.buttons button:nth-child(2)').childNodes[0].textContent = t.addToCart;
+
+      // Testimonial
+      document.querySelector('.testimonial .title').textContent = t.testimonial;
+
+      // FAQ
+      document.querySelectorAll('.title').forEach(title => {
+        if (title.textContent.trim().toLowerCase() === "faq") {
+          title.textContent = t.faq;
+        }
+      });
+
+      // Share label
+      const share = document.querySelector('.share span');
+      if (share) share.textContent = t.share;
+
+      // Footer
+      document.querySelector(".footer-col-1 h3").textContent = t.footerAboutTitle;
+      document.querySelector(".footer-col-1 p").textContent = t.footerAboutText;
+      document.querySelector(".footer-col-2 p").textContent = t.footerSlogan;
+      document.querySelector(".footer-col-3 h3").textContent = t.footerLinksTitle;
+      document.querySelector(".footer-col-3 li:nth-child(1) a").textContent = t.footerHome;
+      document.querySelector(".footer-col-3 li:nth-child(2) a").textContent = t.footerMakeup;
+      document.querySelector(".footer-col-3 li:nth-child(3) a").textContent = t.footerSkincare;
+      document.querySelector(".footer-col-3 li:nth-child(4) a").textContent = t.footerHair;
+      document.querySelector(".footer-col-4 h3").textContent = t.footerFollowTitle;
+      document.querySelector(".footer-col-4 li:nth-child(1) a").textContent = t.footerInstagram;
+      document.querySelector(".footer-col-4 li:nth-child(2) a").textContent = t.footerFacebook;
+      document.querySelector(".footer-col-4 li:nth-child(3) a").textContent = t.footerTwitter;
+    }
+
+    function updateLanguageButton() {
+      const langButton = document.querySelector('.nav-icons a'); // botão da língua
+      if (langButton) {
+        langButton.textContent = currentLang === 'en' ? '🌍 EN' : '🌍 PT';
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applyTranslations(currentLang);
+      updateLanguageButton();
+    });
+  </script>
+
+
+</body>
+</html>

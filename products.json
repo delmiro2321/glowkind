@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "HAIR",
+        "price": 200,
+        "image": "images/hair.png",
+        "description": "teste de description"
+    },
+    {
+        "id": 2,
+        "name": "MAKEUP",
+        "price": 200,
+        "image": "images/hair.png",
+        "description": "teste de description"
+    },
+    {
+        "id": 3,
+        "name": "SKINCARE",
+        "price": 200,
+        "image": "images/makeup.png",
+        "description": "teste de description"
+    },
+    {
+        "id": 4,
+        "name": "teste1",
+        "price": 200,
+        "image":"images/makeup.png",
+        "description":"teste de description"
+    },
+    {
+        "id": 5,
+        "name": "teste2",
+        "price": 200,
+        "image":"images/hair.png",
+        "description":"teste de description"
+    }
+]

@@ -1,0 +1,68 @@
+<!-- Makeup -->
+            <div class="dropdown">
+                <a href="makeup.html" class="dropbtn">Makeup</a>
+                <div class="dropdown-content">
+                    <div class="submenu">
+                        <h4>Face</h4>
+                        <a href="makeup/face/foundation.html">Foundation</a>
+                        <a href="makeup/face/concealer.html">Concealer</a>
+                        <a href="makeup/face/powder.html">Powder</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Eyes</h4>
+                        <a href="makeup/eyes/mascara.html">Mascara</a>
+                        <a href="makeup/eyes/eyeliner.html">Eyeliner</a>
+                        <a href="makeup/eyes/eyeshadow.html">Eyeshadow</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Lips</h4>
+                        <a href="makeup/lips/lipstick.html">Lipstick</a>
+                        <a href="makeup/lips/lipgloss.html">Lip Gloss</a>
+                        <a href="makeup/lips/lipbalm.html">Lip Balm</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skincare -->
+            <div class="dropdown">
+                <a href="skincare.html" class="dropbtn">Skincare</a>
+                <div class="dropdown-content">
+                    <div class="submenu">
+                        <h4>Cleansers</h4>
+                        <a href="#">Face Wash</a>
+                        <a href="#">Cleansing Oils</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Moisturizers</h4>
+                        <a href="#">Day Cream</a>
+                        <a href="#">Night Cream</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Treatments</h4>
+                        <a href="#">Serums</a>
+                        <a href="#">Face Masks</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hair -->
+            <div class="dropdown">
+                <a href="hair.html" class="dropbtn">Hair</a>
+                <div class="dropdown-content">
+                    <div class="submenu">
+                        <h4>Shampoo & Conditioner</h4>
+                        <a href="#">Shampoo</a>
+                        <a href="#">Conditioner</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Styling</h4>
+                        <a href="#">Hair Sprays</a>
+                        <a href="#">Heat Protectants</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Treatments</h4>
+                        <a href="#">Hair Masks</a>
+                        <a href="#">Scalp Care</a>
+                    </div>
+                </div>
+            </div>

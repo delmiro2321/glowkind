@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Kind</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- Promo Bar -->
+    <div class="promo-bar" id="promo-bar">PAYDAY: UP TO 30% OFF SELECTED PRODUCTS</div>
+    <script>
+        const messages = [
+            "EXCLUSIVE LAUNCH: PREMIUM BEAUTY STARTING AT €50",
+            "VISIBLE RESULTS – DISCOVER OUR NEW COLLECTION",
+            "FREE SHIPPING ON ORDERS OVER €50",
+            "ELEVATE YOUR ROUTINE – EXPERIENCE LONG-LASTING QUALITY"
+        ];
+
+        let currentIndex = 0;
+        const promoBar = document.getElementById("promo-bar");
+
+        setInterval(() => {
+            promoBar.style.opacity = 0;
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % messages.length;
+                promoBar.textContent = messages[currentIndex];
+                promoBar.style.opacity = 1;
+            }, 500); // tempo da transição de opacidade
+        }, 4000); // troca a cada 4 segundos
+    </script>
+
+    <div class="nav-container">
+        <a href="index.html" style="text-decoration: none; color: inherit;" class="logo">GLOW KIND</a>
+        <div class="nav-links">
+
+            <!-- Makeup -->
+            <div class="dropdown">
+                <a href="makeup/makeup.html" class="dropbtn">Makeup</a>
+                <div class="dropdown-content">
+                    <div class="submenu">
+                        <h4>Face</h4>
+                        <a href="makeup/face/foundation.html">Foundation</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Eyes</h4>
+                        <a href="makeup/eyes/mascara.html">Mascara</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Lips</h4>
+                        <a href="makeup/lips/lipgloss.html">Lip Gloss</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skincare -->
+            <div class="dropdown">
+                <a href="skincare/skincare.html" class="dropbtn">Skincare</a>
+                <div class="dropdown-content">
+                    <div class="submenu">
+                        <h4>Cleansers</h4>
+                        <a href="skincare/cleansers/facewash.html">Face Wash</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Moisturizers</h4>
+                        <a href="skincare/moisturizers/daycream.html">Day Cream</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Treatments</h4>
+                        <a href="skincare/treatments/serums.html">Serums</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hair -->
+            <div class="dropdown">
+                <a href="hair/hair.html" class="dropbtn">Hair</a>
+                <div class="dropdown-content">
+                    <div class="submenu">
+                        <h4>Shampoo</h4>
+                        <a href="hair/shampoo/shampoo.html">Shampoo</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Styling</h4>
+                        <a href="hair/styling/hairsprays.html">Hair Sprays</a>
+                    </div>
+                    <div class="submenu">
+                        <h4>Treatments</h4>
+                        <a href="hair/treatments/hairmasks.html">Hair Masks</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Us -->
+            <div class="dropdown">
+                <a href="aboutus.html" class="dropbtn">About Us</a>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="dropdown">
+                <a href="contactus.html" class="dropbtn">Contact Us</a>
+            </div>
+
+
+        </div>
+
+        <div class="nav-icons">
+            <a href='#' onclick="toggleLanguage()">🌍 Language</a>
+            <a href="contactus.html">🔑 Sign In</a>
+            <a href="#">🛍️ Basket</a>
+        </div>
+    </div>
+
+    <!-- Contact Us Page -->
+    <div class="form-wrapper">
+        <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg transition-all duration-300 hover:shadow-2xl">
+            <h2 class="text-2xl font-bold mb-6 text-center text-[#d18ea6]">Talk With Us</h2>
+
+            <form id="contactForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" name="nome" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-[#d18ea6] focus:border-[#d18ea6]" />
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" name="email" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-[#d18ea6] focus:border-[#d18ea6]" />
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea name="mensagem" rows="4" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-[#d18ea6] focus:border-[#d18ea6]"></textarea>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-[#d18ea6] text-white py-2 rounded-lg hover:bg-pink-600 transition">Send</button>
+            </form>
+
+            <div id="formMessage" class="mt-4 text-center text-green-600 hidden">Mensagem enviada com sucesso!</div>
+        </div>
+
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                document.getElementById('formMessage').classList.remove('hidden');
+                this.reset();
+            });
+        </script>
+    </div>
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-col-1">
+            <h3>About Us</h3>
+            <p>Glow Kind is committed to bringing you the best in beauty, skincare, and haircare with kindness and care.
+            </p>
+        </div>
+
+        <div class="footer-col-2">
+            <img src="images/logo.png" alt="Glow Kind Logo">
+            <p>Kindness in every drop.</p>
+        </div>
+
+        <div class="footer-col-3">
+            <h3>Links</h3>
+            <ul class="ul">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="makeup/makeup.html">Makeup</a></li>
+                <li><a href="skincare/skincare.html">Skincare</a></li>
+                <li><a href="hair/hair.html">Hair</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col-4">
+            <h3>Follow Us</h3>
+            <ul class="ul">
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                topBar: "FREE shipping on orders over $50 | Download our App",
+                promoBar: "PAYDAY: UP TO 30% OFF SELECTED PRODUCTS",
+                aboutTitle: "About Glowkind",
+                aboutText1: "<strong>Glowkind</strong> was born with a simple yet powerful mission: to offer personal care that nurtures both the body and the soul. We're a new brand, fresh on the market, founded by <strong>Delmiro Pereira</strong>, with a vision to grow gradually — with authenticity, purpose, and heart.",
+                aboutText2: "We believe in natural, accessible, and gentle beauty. Our products are designed to blend intuitively into your daily routine, made with ingredients that care for you with kindness. Glowkind is more than a brand — it's a movement that values wellness, self-awareness, and the beauty of simplicity.",
+                aboutText3: "We're just getting started, but with each customer, each step, and every conscious choice, we’re building a more beautiful future — inside and out. Thank you for being part of our journey.",
+                footerAboutTitle: "About Us",
+                footerAboutText: "Glow Kind is committed to bringing you the best in beauty, skincare, and haircare with kindness and care.",
+                footerSlogan: "Kindness in every drop.",
+                footerLinksTitle: "Links",
+                footerFollowTitle: "Follow Us",
+                footerHome: "Home",
+                footerMakeup: "Makeup",
+                footerSkincare: "Skincare",
+                footerHair: "Hair",
+                footerInstagram: "Instagram",
+                footerFacebook: "Facebook",
+                footerTwitter: "Twitter"
+            },
+            pt: {
+                topBar: "ENVIO GRÁTIS em compras acima de $50 | Baixe nosso app",
+                promoBar: "DIA DE PAGAMENTO: ATÉ 30% DE DESCONTO EM PRODUTOS SELECIONADOS",
+                aboutTitle: "Sobre a Glowkind",
+                aboutText1: "<strong>Glowkind</strong> nasceu com uma missão simples e poderosa: oferecer cuidados pessoais que nutrem o corpo e a alma. Somos uma marca nova no mercado, fundada por <strong>Delmiro Pereira</strong>, com uma visão de crescer aos poucos — com autenticidade, propósito e coração.",
+                aboutText2: "Acreditamos em uma beleza natural, acessível e gentil. Nossos produtos são pensados para se encaixar intuitivamente na sua rotina, feitos com ingredientes que cuidam de você com carinho. A Glowkind é mais que uma marca — é um movimento que valoriza o bem-estar, a autoconsciência e a beleza da simplicidade.",
+                aboutText3: "Estamos apenas começando, mas a cada cliente, a cada passo e a cada escolha consciente, estamos construindo um futuro mais bonito — por dentro e por fora. Obrigado por fazer parte da nossa jornada.",
+                footerAboutTitle: "Sobre Nós",
+                footerAboutText: "A Glow Kind está comprometida em trazer o melhor em beleza, cuidados com a pele e cabelos com gentileza e carinho.",
+                footerSlogan: "Gentileza em cada gota.",
+                footerLinksTitle: "Links",
+                footerFollowTitle: "Siga-nos",
+                footerHome: "Início",
+                footerMakeup: "Maquiagem",
+                footerSkincare: "Cuidados com a Pele",
+                footerHair: "Cabelos",
+                footerInstagram: "Instagram",
+                footerFacebook: "Facebook",
+                footerTwitter: "Twitter"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'pt' : 'en';
+            applyTranslations(currentLang);
+            updateLanguageButton();
+        }
+
+        function applyTranslations(lang) {
+            const t = translations[lang];
+
+            // Top bars
+            document.querySelector('.top-bar').textContent = t.topBar;
+            document.querySelector('.promo-bar').textContent = t.promoBar;
+
+            // About content
+            document.querySelector('.about-section h1').textContent = t.aboutTitle;
+            const paragraphs = document.querySelectorAll('.about-section p');
+            if (paragraphs.length >= 3) {
+                paragraphs[0].innerHTML = t.aboutText1;
+                paragraphs[1].innerHTML = t.aboutText2;
+                paragraphs[2].innerHTML = t.aboutText3;
+            }
+
+            // Footer
+            document.querySelector(".footer-col-1 h3").textContent = t.footerAboutTitle;
+            document.querySelector(".footer-col-1 p").textContent = t.footerAboutText;
+            document.querySelector(".footer-col-2 p").textContent = t.footerSlogan;
+            document.querySelector(".footer-col-3 h3").textContent = t.footerLinksTitle;
+            document.querySelector(".footer-col-3 li:nth-child(1) a").textContent = t.footerHome;
+            document.querySelector(".footer-col-3 li:nth-child(2) a").textContent = t.footerMakeup;
+            document.querySelector(".footer-col-3 li:nth-child(3) a").textContent = t.footerSkincare;
+            document.querySelector(".footer-col-3 li:nth-child(4) a").textContent = t.footerHair;
+            document.querySelector(".footer-col-4 h3").textContent = t.footerFollowTitle;
+            document.querySelector(".footer-col-4 li:nth-child(1) a").textContent = t.footerInstagram;
+            document.querySelector(".footer-col-4 li:nth-child(2) a").textContent = t.footerFacebook;
+            document.querySelector(".footer-col-4 li:nth-child(3) a").textContent = t.footerTwitter;
+        }
+
+        function updateLanguageButton() {
+            const langButton = document.querySelector('.nav-icons a');
+            if (langButton) {
+                langButton.textContent = currentLang === 'en' ? '🌍 EN' : '🌍 PT';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            applyTranslations(currentLang);
+            updateLanguageButton();
+        });
+    </script>
+
+
+</body>
+
+</html>
